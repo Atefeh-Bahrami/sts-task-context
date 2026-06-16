@@ -1,0 +1,36 @@
+# MATLAB temporary files
+*.asv
+*.m~
+*.slxc
+
+# Python cache
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Data and generated outputs
+Data-Neuro/
+test_statatistic/
+statistical test/
+output/
+svm_data/
+svm_output/
+diff_regions_data/
+interested_channels/
+
+# Large data/model files
+*.mat
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.ckpt
+
+# System files
+.DS_Store
+Thumbs.db
