@@ -15,8 +15,9 @@
 % After preprocessing, data must be organized as:
 %
 %   Exp1/
-%       └── M1/
-%            └── All_Data_Structures/
+%       └── Data-Neuro/
+%           └── M1/
+%               └── All_Data_Structures/
 %                      ├── session1.mat
 %                      ├── session2.mat
 %                      └── ...
@@ -24,7 +25,7 @@
 %To run this analysis, pass the path to the corresponding
 % "All_Data_Structures" directory as input:
 %
-% results = make_results('./Exp1/M1/All_Data_Structures', 'M1');
+% results = make_results('your_local_path/Exp1/Data-Neuro/M1/All_Data_Structures', 'M1');
 % -------------------------------------------------------------------------
 % NOTE ON TASK NAMING:
 % At the data-processing stage, task conditions were labeled as "main"
@@ -32,7 +33,7 @@
 %
 % In the manuscript and analyses, these conditions correspond to:
 %   control  → TD condition
-%   main     → PC conditi
+%   main     → PC condition
 % -------------------------------------------------------------------------
 %
 % The pipeline:

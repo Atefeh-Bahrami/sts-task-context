@@ -8,19 +8,20 @@
 % then be unzipped and placed inside the Exp1 directory as follows:
 %
 %   Exp1/
-%       └── M1/
-%            ├── session1.mat
-%            ├── session2.mat
-%            └── ...
-%       └── M2/
-%            ├── session1.mat
-%            ├── session2.mat
-%            └── ...
+%       └── Data-Neuro/
+%           └── M1/
+%               ├── session1.mat
+%               ├── session2.mat
+%               └── ...
+%           └── M2/
+%               ├── session1.mat
+%               ├── session2.mat
+%               └── ...
 %
 % The input_folder argument should point to the directory corresponding
-% to a specific monkey (e.g., './Exp1/M1').
+% to a specific monkey (e.g., 'your_local_path/Exp1/Data-Neuro/M1').
 % Example:
-%   results = run_full_pipeline('./Exp1/Data-Neuro/M1', 'M1');
+%   results = run_full_pipeline('your_local_path/Exp1/Data-Neuro/M1', 'M1');
 %
 % -------------------------------------------------------------------------
 % This function:

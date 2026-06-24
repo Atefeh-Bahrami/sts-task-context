@@ -15,17 +15,18 @@
 % After preprocessing, data must be organized as:
 %
 %   Exp2/
-%       └── M1/
-%            └── mSTS/
-%                 └── All_Data_Structures/
-%                      ├── session1.mat
-%                      ├── session2.mat
-%                      └── ...
+%       └── Data-Neuro/
+%               └── M1/
+%                   └── mSTS/
+%                       └── All_Data_Structures/
+%                           ├── session1.mat
+%                           ├── session2.mat
+%                           └── ...
 %
 % To run this analysis, pass the path to the corresponding
 % "All_Data_Structures" directory as input:
 %
-%   results = make_results('./Exp2/M1/mSTS/All_Data_Structures', 'M1', 'mSTS');
+%  results = make_results('your_local_path/Exp2/Data-Neuro/M1/mSTS/All_Data_Structures', 'M1', 'mSTS');
 %
 % The script must be run separately for each region (e.g., mSTS and aSTS)
 % before performing cross-region comparisons.
@@ -37,7 +38,7 @@
 %
 % In the manuscript and analyses, these conditions correspond to:
 %   control  → TD condition
-%   main     → PC conditi
+%   main     → PC condition
 % -------------------------------------------------------------------------
 %
 % The script:
@@ -281,39 +282,39 @@ function results = collect_all_sessions(folder_name, monkey_name)
 
         %%%%%%%%%%%%%%%%%%%%%%%%% interested_channels %%%%%%%%%%%%%%%%%%%%%
         
-        if interested_Task == "Control"
-            interested_channels_control = loaded_data.data_struct.channels_above_z3;
+        if interested_Task == "control"
+            interested_channels_control = loaded_data.data_struct.channels_above_z4;
 
             mean_response_control = loaded_data.data_struct.mean_response_all_stimuli(all_channels);
             reliability_control = loaded_data.data_struct.reliability(all_channels);
             stimuli_respons_control = loaded_data.data_struct.mean_response;
             high_stimuli_response_control = loaded_data.data_struct.high_stimuli_response;
             data_high_stimuli_control = loaded_data.data_struct.data_high_stimuli;
-            %data_all_stimuli_control = loaded_data.data_struct.all_stimuli_response;
-            data_all_stimuli_control = loaded_data.data_struct.data_all_stimuli;
-            %response_firing_medium_control = loaded_data.data_struct.response_firing_medium_stimuli;
-            response_firing_medium_control = loaded_data.data_struct.response_firing_model;
+            data_all_stimuli_control = loaded_data.data_struct.all_stimuli_response;
+            %data_all_stimuli_control = loaded_data.data_struct.data_all_stimuli;
+            response_firing_medium_control = loaded_data.data_struct.response_firing_medium_stimuli;
+            %response_firing_medium_control = loaded_data.data_struct.response_firing_model;
             data_empty_stimulus_control = loaded_data.data_struct.data_empty_stimulus;
             data_res_window_bins_control = loaded_data.data_struct.data_res_window_bins;
-           % data_res_window_bins_control_svm2 = loaded_data.data_struct.data_res_window_bins_svm2;
+            data_res_window_bins_control_svm2 = loaded_data.data_struct.data_res_window_bins_svm2;
 
         end
 
-        if interested_Task == "Main"
-            interested_channels_main = loaded_data.data_struct.channels_above_z3;
+        if interested_Task == "main"
+            interested_channels_main = loaded_data.data_struct.channels_above_z4;
 
             mean_response_main = loaded_data.data_struct.mean_response_all_stimuli(all_channels);
             reliability_main = loaded_data.data_struct.reliability(all_channels);
             stimuli_respons_main = loaded_data.data_struct.mean_response;
             high_stimuli_response_main = loaded_data.data_struct.high_stimuli_response;
             data_high_stimuli_main = loaded_data.data_struct.data_high_stimuli;
-            %data_all_stimuli_main = loaded_data.data_struct.all_stimuli_response;
-            data_all_stimuli_main = loaded_data.data_struct.data_all_stimuli;
-            %response_firing_medium_main = loaded_data.data_struct.response_firing_medium_stimuli;
-            response_firing_medium_main = loaded_data.data_struct.response_firing_model;
+            data_all_stimuli_main = loaded_data.data_struct.all_stimuli_response;
+            %data_all_stimuli_main = loaded_data.data_struct.data_all_stimuli;
+            response_firing_medium_main = loaded_data.data_struct.response_firing_medium_stimuli;
+            %response_firing_medium_main = loaded_data.data_struct.response_firing_model;
             data_empty_stimulus_main = loaded_data.data_struct.data_empty_stimulus;
             data_res_window_bins_main = loaded_data.data_struct.data_res_window_bins;
-           % data_res_window_bins_main_svm2 = loaded_data.data_struct.data_res_window_bins_svm2;
+            data_res_window_bins_main_svm2 = loaded_data.data_struct.data_res_window_bins_svm2;
             
 
 
@@ -885,14 +886,14 @@ function psth = compute_bootstrap_psth_2plots_with_normalization(data_control, d
     binned_control = bin_units(data_control(:, time_window), bin_size);
     binned_main    = bin_units(data_main(:, time_window), bin_size);
 
-    disp('binned_control_shape:');
-    disp(size(binned_control));
+    % disp('binned_control_shape:');
+    % disp(size(binned_control));
 
     if has_empty
         binned_empty_control = bin_units(data_empty_control(:, time_window), bin_size);
         binned_empty_main    = bin_units(data_empty_main(:, time_window), bin_size);
-        disp('binned_empty_control_shape:')
-        disp(size(binned_empty_control));
+        % disp('binned_empty_control_shape:')
+        % disp(size(binned_empty_control));
     end
 
     
@@ -922,8 +923,8 @@ function psth = compute_bootstrap_psth_2plots_with_normalization(data_control, d
             max(binned_main, [], 2) ...
         ], [], 2);
     end
-    disp("norm_value_per_unit:")
-    disp(norm_value_per_unit);
+    % disp("norm_value_per_unit:")
+    % disp(norm_value_per_unit);
 
     % Avoid division by zero
     norm_value_per_unit(norm_value_per_unit == 0 | isnan(norm_value_per_unit)) = 1;
