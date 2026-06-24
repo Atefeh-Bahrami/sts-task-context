@@ -3,6 +3,22 @@
 This repository contains MATLAB pipelines for population-level analysis of neural recordings across two experiments, together with Python scripts for decoding analyses.
 ---
 
+## Code Clone
+
+To use the code, first clone this repository:
+
+git clone https://github.com/Atefeh-Bahrami/sts-task-context.git
+
+Then go to the project folder:
+
+cd sts-task-context
+
+The code is organized into separate folders for Experiment 1 and Experiment 2:
+
+Exp1/: scripts and notebooks for Experiment 1
+Exp2/: scripts and notebooks for Experiment 2
+
+
 ## Data Download
 
 Download the dataset from the link below and extract it locally before running the analysis:
