@@ -2,7 +2,7 @@
 
 This repository contains MATLAB pipelines for population-level analysis of neural recordings across two experiments presented in the paper:
 
-**"Task Context Modulates the Selectivity of Macaque Superior Temporal Sulcus Neurons for Partially Occluded Bodies"**, published in the *Journal of Neuroscience*.
+**"Task Context Modulates the Selectivity of Macaque Superior Temporal Sulcus Neurons for Partially Occluded Bodies"**.
 ---
 ## Requirements
 
