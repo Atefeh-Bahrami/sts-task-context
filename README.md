@@ -161,11 +161,11 @@ Running the MATLAB pipelines generates:
 - Region-level response difference plots (Experiment 2)
 - Processed neural data for downstream analyses (e.g., SVM decoding)
 
-## Reproducibility Notes
+## Notes
 
-The number of units included in the analyses may vary slightly between runs and may differ from the numbers reported in the published figures. This variability arises from the stochastic nature of the reliability estimation procedure, which can result in small differences in the number of units meeting the reliability criterion.
+- The number of units included in the analyses may vary slightly between runs and may differ from the numbers reported in the published figures. This variability arises from the stochastic nature of the reliability estimation procedure, which can result in small differences in the number of units meeting the reliability criterion. These minor variations do not affect the main findings or conclusions of the study.
 
-These minor variations do not affect the main findings or conclusions of the study.
+- Region-level response difference plots require data from both `aSTS` and `mSTS` for the same monkey. Therefore, the pipeline must be executed for both recording regions before these comparisons can be performed. If the required files for one region are not yet available, the corresponding region-comparison plots will not be generated until the missing region has been processed.
 
 ## Citation
 
