@@ -9,6 +9,12 @@ __pycache__/
 .venv/
 .env
 
+# Temporarily exclude Python scripts and notebooks in Exp1 and Exp2
+/Exp1/**/*.py
+/Exp1/**/*.ipynb
+/Exp2/**/*.py
+/Exp2/**/*.ipynb
+
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/
 **/.ipynb_checkpoints/
