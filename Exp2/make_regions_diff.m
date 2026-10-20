@@ -12,11 +12,15 @@ regions = {'aSTS','mSTS'};
 [all_ready, missing_files] = check_region_diff_files(monkey_name, regions, bin_size, out_folder);
 
     if ~all_ready
-        disp('Both region files are not available yet.');
-        disp('Missing files:')
-        disp(missing_files)
+        fprintf('Region comparison cannot be performed yet for monkey %s.\n', monkey_name);
+        fprintf('The following required files are missing:\n');
     
-    else
+        disp(missing_files);
+    
+        fprintf('Run the pipeline for the missing region to generate these files.\n');
+        return;
+    
+    end
     
 
     aSTS_all = load_and_normalize_region_diff(out_folder, sprintf('%s_aSTS_all_diff_original_10.mat', monkey_name), ...
@@ -34,12 +38,12 @@ regions = {'aSTS','mSTS'};
     mSTS_high = load_and_normalize_region_diff(out_folder, sprintf('%s_mSTS_high_diff_original_10.mat', monkey_name), ...
     'diff_original_bins_mean', sprintf('%s_mSTS_high_ci_diff_bins_10.mat', monkey_name), 'ci_diff_bins', 1:70, 30:60);
     
-    
+    fprintf('Generating regional differences plots...\n');
     fig_diff_all = plot_normalized_region_diff(aSTS_high, mSTS_high);
     
     end
 
-end
+
 
 
 %%%%%%%%%%%%%%%%% Functions %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

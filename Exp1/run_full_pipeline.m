@@ -32,6 +32,8 @@ function results = run_full_pipeline(input_folder, monkey_name)
 
     % ---------- Session-level preprocessing ----------
     % Build standardized data structures for all sessions in the input folder
+    fprintf('Building session data structures for monkey %s...', ...
+        monkey_name);
 
     build_all_data_structures(input_folder, monkey_name);
 

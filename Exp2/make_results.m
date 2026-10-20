@@ -72,7 +72,7 @@ function results = make_results(folder_name, monkey_name, region)
     % normalized neural response patterns and compare within-task structure
 
 
-    fprintf('Computing dissimilarity matrix for monkey %s region %s...\n', monkey_name, region);
+    fprintf('Computing dissimilarity matrix for monkey %s, region %s...\n', monkey_name, region);
 
     [dissimilarity_matrix, dissimilarity_vector, stim_list_control_main] = compute_dissimilarity_matrix(results.all_stimuli_respons_main, results.all_stimuli_respons_control, results.stimlist);
     
@@ -107,7 +107,7 @@ function results = make_results(folder_name, monkey_name, region)
     bin_size = 10;
     %Mean responses to all stimuli 
     
-    fprintf('Computing PSTHs for monkey %s region %s...\n', monkey_name, region);
+    fprintf('Computing PSTHs for monkey %s, region %s...\n', monkey_name, region);
 
     psth = compute_bootstrap_psth_2plots(results.all_all_stimuli_data_control, results.all_all_stimuli_data_main, numBootstrapSamples, bin_size, results.all_data_empty_stimulus_control, results.all_data_empty_stimulus_main);
     fig = plot_bootstrap_psth_2plots(psth, p, p_o);
@@ -141,7 +141,7 @@ function results = make_results(folder_name, monkey_name, region)
     % response structure and task-dependent reordering
 
     
-    fprintf('Computing ranking plots for monkey %s region %s...\n', monkey_name, region);
+    fprintf('Generating ranking plots for monkey %s, region %s...\n', monkey_name, region);
     numBootstrapSamples = 1000;
     baseline_win = 150:349;
     trials_num = 9;
@@ -164,14 +164,16 @@ function results = make_results(folder_name, monkey_name, region)
     [all_ready, missing_files] = check_region_diff_files(monkey_name, region, bin_size, out_folder);
 
     if ~all_ready
-        disp(['Region difference files are not available yet. Creating files for region ' char(region) ' ...']);
-        disp('Region difference files:')
-        disp(missing_files)
+        fprintf('Generating files for region %s to compute regional differences...\n', region);
+        % fprintf('The following required files are missing:\n');
+        % 
+        % disp(missing_files);
 
         diff_high = compute_bootstrap_binned_difference( results.all_high_stimuli_data_control, results.all_high_stimuli_data_main, 1000, 10);
         diff_all = compute_bootstrap_binned_difference(results.all_all_stimuli_data_control, results.all_all_stimuli_data_main, 1000, 10);
     
         save_region_diff_stats(diff_high, diff_all, monkey_name, region, bin_size, out_folder);
+        fprintf('Region files for computing regional differences successfully generated for region %s.\n', region);
     end     
 
     %%%%%%%%%%%%%%%%%%%%%%%%%% Save SVM decoding datasets %%%%%%%%%%%%%%%%%

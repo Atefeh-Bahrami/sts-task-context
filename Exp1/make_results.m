@@ -47,6 +47,7 @@
 
 function results = make_results(folder_name, monkey_name)
 
+
     
     % Load and concatenate data across all sessions for the specified monkey
     results = collect_all_sessions(folder_name, monkey_name);
@@ -55,6 +56,8 @@ function results = make_results(folder_name, monkey_name)
 
     % Compute population-level stimulus dissimilarity matrices based on
     % normalized neural response patterns and compare within-task structure
+
+    fprintf('Computing dissimilarity matrix for monkey %s...\n', monkey_name);
 
     [dissimilarity_matrix, dissimilarity_vector, stim_list_control_main] = compute_dissimilarity_matrix(results.all_stimuli_respons_main, results.all_stimuli_respons_control, results.stimlist);
     
@@ -83,6 +86,8 @@ function results = make_results(folder_name, monkey_name)
     numBootstrapSamples = 1000;
     bin_size = 10;
     
+    fprintf('Computing PSTHs for monkey %s...\n', monkey_name);
+
     % All stimuli 
     psth = compute_bootstrap_psth(results.all_all_stimuli_data_control, results.all_all_stimuli_data_main, numBootstrapSamples, bin_size);
     fig = plot_bootstrap_psth(psth, p);
@@ -559,11 +564,11 @@ function psth = compute_bootstrap_psth_with_normalization( all_all_stimuli_data_
         all_all_stimuli_data_main(:, time_window), ...
         bin_size);
 
-    disp('binned_control_shape:');
-    disp(size(binned_control));
-
-    disp('binned_main_shape:');
-    disp(size(binned_main));
+    % disp('binned_control_shape:');
+    % disp(size(binned_control));
+    % 
+    % disp('binned_main_shape:');
+    % disp(size(binned_main));
 
     % ---------------------------------------------------------
     % 2) Find normalization value for each unit separately
