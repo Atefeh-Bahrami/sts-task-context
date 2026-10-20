@@ -1,6 +1,4 @@
 
-% fix line 84 with kruskal walis test
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % build_all_data_structures.m
 %
